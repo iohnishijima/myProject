@@ -1,37 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import ImageList from './ImageList';
 import ImageUpload from './ImageUpload';
+import Login from './componentes/pages/Login';
+import {Routes, Route} from "react-router-dom";
+import Home from './componentes/pages/Home';
+import { LoginUserProvider } from './componentes/providers/LoginUserProvider';
+import Main from './componentes/pages/Main';
+import Album from './componentes/pages/Album';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 function App() {
   return (
-    <div>
-      <h1>画像アップロードと管理</h1>
-      <ImageUpload />
-      <ImageList />
-    </div>
+    <LoginUserProvider>
+      <div className='App'>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/main" element={<Main/>}/>
+          <Route path="/album" element={<Album/>}/>
+          {/* <ImageUpload />
+          <ImageList /> */}
+        </Routes>
+      </div>
+    </LoginUserProvider>
   );
 }
 
